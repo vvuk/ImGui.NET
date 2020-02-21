@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -7,7 +7,7 @@ namespace ImGuiNET
 {
     public unsafe partial struct ImFontGlyph
     {
-        public ushort Codepoint;
+        public uint Codepoint;
         public float AdvanceX;
         public float X0;
         public float Y0;
@@ -18,15 +18,16 @@ namespace ImGuiNET
         public float U1;
         public float V1;
     }
+
     public unsafe partial struct ImFontGlyphPtr
     {
         public ImFontGlyph* NativePtr { get; }
         public ImFontGlyphPtr(ImFontGlyph* nativePtr) => NativePtr = nativePtr;
         public ImFontGlyphPtr(IntPtr nativePtr) => NativePtr = (ImFontGlyph*)nativePtr;
         public static implicit operator ImFontGlyphPtr(ImFontGlyph* nativePtr) => new ImFontGlyphPtr(nativePtr);
-        public static implicit operator ImFontGlyph* (ImFontGlyphPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator ImFontGlyph*(ImFontGlyphPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImFontGlyphPtr(IntPtr nativePtr) => new ImFontGlyphPtr(nativePtr);
-        public ref ushort Codepoint => ref Unsafe.AsRef<ushort>(&NativePtr->Codepoint);
+        public ref uint Codepoint => ref Unsafe.AsRef<uint>(&NativePtr->Codepoint);
         public ref float AdvanceX => ref Unsafe.AsRef<float>(&NativePtr->AdvanceX);
         public ref float X0 => ref Unsafe.AsRef<float>(&NativePtr->X0);
         public ref float Y0 => ref Unsafe.AsRef<float>(&NativePtr->Y0);

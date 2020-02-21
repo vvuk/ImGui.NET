@@ -57,6 +57,7 @@ namespace CodeGenerator
             "ImVec2",
             "ImVec4",
             "ImGuiStoragePair",
+            "ImFontGlyph",
         };
 
         private static readonly Dictionary<string, string> s_wellKnownDefaultValues = new Dictionary<string, string>()

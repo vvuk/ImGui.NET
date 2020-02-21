@@ -114,5 +114,10 @@ namespace ImGuiNET
         {
             ImGuiNative.ImFont_SetFallbackChar(NativePtr, c);
         }
+        public void SetGlyphVisible(ushort c, bool visible)
+        {
+            byte native_visible = visible ? (byte)1 : (byte)0;
+            ImGuiNative.ImFont_SetGlyphVisible(NativePtr, c, native_visible);
+        }
     }
 }

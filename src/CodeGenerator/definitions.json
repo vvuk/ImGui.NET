@@ -4186,6 +4186,34 @@
       "stname": "ImFont"
     }
   ],
+  "ImFont_SetGlyphVisible": [
+    {
+      "args": "(ImFont* self,ImWchar c,bool visible)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "ImFont*"
+        },
+        {
+          "name": "c",
+          "type": "ImWchar"
+        },
+        {
+          "name": "visible",
+          "type": "bool"
+        }
+      ],
+      "argsoriginal": "(ImWchar c,bool visible)",
+      "call_args": "(c,visible)",
+      "cimguiname": "ImFont_SetGlyphVisible",
+      "defaults": [],
+      "funcname": "SetGlyphVisible",
+      "ov_cimguiname": "ImFont_SetGlyphVisible",
+      "ret": "void",
+      "signature": "(ImWchar,bool)",
+      "stname": "ImFont"
+    }
+  ],
   "ImFont_destroy": [
     {
       "args": "(ImFont* self)",
@@ -4689,6 +4717,74 @@
       "ret": "void",
       "signature": "(ImGuiPayload*)",
       "stname": "ImGuiPayload"
+    }
+  ],
+  "ImGuiPlatformIO_ImGuiPlatformIO": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "ImGuiPlatformIO_ImGuiPlatformIO",
+      "constructor": true,
+      "defaults": [],
+      "funcname": "ImGuiPlatformIO",
+      "ov_cimguiname": "ImGuiPlatformIO_ImGuiPlatformIO",
+      "signature": "()",
+      "stname": "ImGuiPlatformIO"
+    }
+  ],
+  "ImGuiPlatformIO_destroy": [
+    {
+      "args": "(ImGuiPlatformIO* self)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "ImGuiPlatformIO*"
+        }
+      ],
+      "call_args": "(self)",
+      "cimguiname": "ImGuiPlatformIO_destroy",
+      "defaults": [],
+      "destructor": true,
+      "ov_cimguiname": "ImGuiPlatformIO_destroy",
+      "ret": "void",
+      "signature": "(ImGuiPlatformIO*)",
+      "stname": "ImGuiPlatformIO"
+    }
+  ],
+  "ImGuiPlatformMonitor_ImGuiPlatformMonitor": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "ImGuiPlatformMonitor_ImGuiPlatformMonitor",
+      "constructor": true,
+      "defaults": [],
+      "funcname": "ImGuiPlatformMonitor",
+      "ov_cimguiname": "ImGuiPlatformMonitor_ImGuiPlatformMonitor",
+      "signature": "()",
+      "stname": "ImGuiPlatformMonitor"
+    }
+  ],
+  "ImGuiPlatformMonitor_destroy": [
+    {
+      "args": "(ImGuiPlatformMonitor* self)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "ImGuiPlatformMonitor*"
+        }
+      ],
+      "call_args": "(self)",
+      "cimguiname": "ImGuiPlatformMonitor_destroy",
+      "defaults": [],
+      "destructor": true,
+      "ov_cimguiname": "ImGuiPlatformMonitor_destroy",
+      "ret": "void",
+      "signature": "(ImGuiPlatformMonitor*)",
+      "stname": "ImGuiPlatformMonitor"
     }
   ],
   "ImGuiStoragePair_ImGuiStoragePair": [
@@ -5776,6 +5872,74 @@
       "ret": "void",
       "signature": "(char,ImVector_ImGuiTextRange*)const",
       "stname": "ImGuiTextRange"
+    }
+  ],
+  "ImGuiViewport_ImGuiViewport": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "ImGuiViewport_ImGuiViewport",
+      "constructor": true,
+      "defaults": [],
+      "funcname": "ImGuiViewport",
+      "ov_cimguiname": "ImGuiViewport_ImGuiViewport",
+      "signature": "()",
+      "stname": "ImGuiViewport"
+    }
+  ],
+  "ImGuiViewport_destroy": [
+    {
+      "args": "(ImGuiViewport* self)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "ImGuiViewport*"
+        }
+      ],
+      "call_args": "(self)",
+      "cimguiname": "ImGuiViewport_destroy",
+      "defaults": [],
+      "destructor": true,
+      "ov_cimguiname": "ImGuiViewport_destroy",
+      "ret": "void",
+      "signature": "(ImGuiViewport*)",
+      "stname": "ImGuiViewport"
+    }
+  ],
+  "ImGuiWindowClass_ImGuiWindowClass": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "ImGuiWindowClass_ImGuiWindowClass",
+      "constructor": true,
+      "defaults": [],
+      "funcname": "ImGuiWindowClass",
+      "ov_cimguiname": "ImGuiWindowClass_ImGuiWindowClass",
+      "signature": "()",
+      "stname": "ImGuiWindowClass"
+    }
+  ],
+  "ImGuiWindowClass_destroy": [
+    {
+      "args": "(ImGuiWindowClass* self)",
+      "argsT": [
+        {
+          "name": "self",
+          "type": "ImGuiWindowClass*"
+        }
+      ],
+      "call_args": "(self)",
+      "cimguiname": "ImGuiWindowClass_destroy",
+      "defaults": [],
+      "destructor": true,
+      "ov_cimguiname": "ImGuiWindowClass_destroy",
+      "ret": "void",
+      "signature": "(ImGuiWindowClass*)",
+      "stname": "ImGuiWindowClass"
     }
   ],
   "ImVec2_ImVec2": [
@@ -8274,6 +8438,92 @@
       "stname": ""
     }
   ],
+  "igDestroyPlatformWindows": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "igDestroyPlatformWindows",
+      "defaults": [],
+      "funcname": "DestroyPlatformWindows",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igDestroyPlatformWindows",
+      "ret": "void",
+      "signature": "()",
+      "stname": ""
+    }
+  ],
+  "igDockSpace": [
+    {
+      "args": "(ImGuiID id,const ImVec2 size,ImGuiDockNodeFlags flags,const ImGuiWindowClass* window_class)",
+      "argsT": [
+        {
+          "name": "id",
+          "type": "ImGuiID"
+        },
+        {
+          "name": "size",
+          "type": "const ImVec2"
+        },
+        {
+          "name": "flags",
+          "type": "ImGuiDockNodeFlags"
+        },
+        {
+          "name": "window_class",
+          "type": "const ImGuiWindowClass*"
+        }
+      ],
+      "argsoriginal": "(ImGuiID id,const ImVec2& size=ImVec2(0,0),ImGuiDockNodeFlags flags=0,const ImGuiWindowClass* window_class=((void*)0))",
+      "call_args": "(id,size,flags,window_class)",
+      "cimguiname": "igDockSpace",
+      "defaults": {
+        "flags": "0",
+        "size": "ImVec2(0,0)",
+        "window_class": "((void*)0)"
+      },
+      "funcname": "DockSpace",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igDockSpace",
+      "ret": "void",
+      "signature": "(ImGuiID,const ImVec2,ImGuiDockNodeFlags,const ImGuiWindowClass*)",
+      "stname": ""
+    }
+  ],
+  "igDockSpaceOverViewport": [
+    {
+      "args": "(ImGuiViewport* viewport,ImGuiDockNodeFlags flags,const ImGuiWindowClass* window_class)",
+      "argsT": [
+        {
+          "name": "viewport",
+          "type": "ImGuiViewport*"
+        },
+        {
+          "name": "flags",
+          "type": "ImGuiDockNodeFlags"
+        },
+        {
+          "name": "window_class",
+          "type": "const ImGuiWindowClass*"
+        }
+      ],
+      "argsoriginal": "(ImGuiViewport* viewport=((void*)0),ImGuiDockNodeFlags flags=0,const ImGuiWindowClass* window_class=((void*)0))",
+      "call_args": "(viewport,flags,window_class)",
+      "cimguiname": "igDockSpaceOverViewport",
+      "defaults": {
+        "flags": "0",
+        "viewport": "((void*)0)",
+        "window_class": "((void*)0)"
+      },
+      "funcname": "DockSpaceOverViewport",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igDockSpaceOverViewport",
+      "ret": "ImGuiID",
+      "signature": "(ImGuiViewport*,ImGuiDockNodeFlags,const ImGuiWindowClass*)",
+      "stname": ""
+    }
+  ],
   "igDragFloat": [
     {
       "args": "(const char* label,float* v,float v_speed,float v_min,float v_max,const char* format,float power)",
@@ -9150,6 +9400,48 @@
       "stname": ""
     }
   ],
+  "igFindViewportByID": [
+    {
+      "args": "(ImGuiID id)",
+      "argsT": [
+        {
+          "name": "id",
+          "type": "ImGuiID"
+        }
+      ],
+      "argsoriginal": "(ImGuiID id)",
+      "call_args": "(id)",
+      "cimguiname": "igFindViewportByID",
+      "defaults": [],
+      "funcname": "FindViewportByID",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igFindViewportByID",
+      "ret": "ImGuiViewport*",
+      "signature": "(ImGuiID)",
+      "stname": ""
+    }
+  ],
+  "igFindViewportByPlatformHandle": [
+    {
+      "args": "(void* platform_handle)",
+      "argsT": [
+        {
+          "name": "platform_handle",
+          "type": "void*"
+        }
+      ],
+      "argsoriginal": "(void* platform_handle)",
+      "call_args": "(platform_handle)",
+      "cimguiname": "igFindViewportByPlatformHandle",
+      "defaults": [],
+      "funcname": "FindViewportByPlatformHandle",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igFindViewportByPlatformHandle",
+      "ret": "ImGuiViewport*",
+      "signature": "(void*)",
+      "stname": ""
+    }
+  ],
   "igGetBackgroundDrawList": [
     {
       "args": "()",
@@ -9163,6 +9455,25 @@
       "ov_cimguiname": "igGetBackgroundDrawList",
       "ret": "ImDrawList*",
       "signature": "()",
+      "stname": ""
+    },
+    {
+      "args": "(ImGuiViewport* viewport)",
+      "argsT": [
+        {
+          "name": "viewport",
+          "type": "ImGuiViewport*"
+        }
+      ],
+      "argsoriginal": "(ImGuiViewport* viewport)",
+      "call_args": "(viewport)",
+      "cimguiname": "igGetBackgroundDrawList",
+      "defaults": [],
+      "funcname": "GetBackgroundDrawList",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igGetBackgroundDrawListViewportPtr",
+      "ret": "ImDrawList*",
+      "signature": "(ImGuiViewport*)",
       "stname": ""
     }
   ],
@@ -9779,6 +10090,25 @@
       "ret": "ImDrawList*",
       "signature": "()",
       "stname": ""
+    },
+    {
+      "args": "(ImGuiViewport* viewport)",
+      "argsT": [
+        {
+          "name": "viewport",
+          "type": "ImGuiViewport*"
+        }
+      ],
+      "argsoriginal": "(ImGuiViewport* viewport)",
+      "call_args": "(viewport)",
+      "cimguiname": "igGetForegroundDrawList",
+      "defaults": [],
+      "funcname": "GetForegroundDrawList",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igGetForegroundDrawListViewportPtr",
+      "ret": "ImDrawList*",
+      "signature": "(ImGuiViewport*)",
+      "stname": ""
     }
   ],
   "igGetFrameCount": [
@@ -10115,6 +10445,22 @@
       "stname": ""
     }
   ],
+  "igGetMainViewport": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "igGetMainViewport",
+      "defaults": [],
+      "funcname": "GetMainViewport",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igGetMainViewport",
+      "ret": "ImGuiViewport*",
+      "signature": "()",
+      "stname": ""
+    }
+  ],
   "igGetMouseCursor": [
     {
       "args": "()",
@@ -10318,6 +10664,23 @@
       "ov_cimguiname": "igGetMousePosOnOpeningCurrentPopup_nonUDT2",
       "ret": "ImVec2_Simple",
       "retorig": "ImVec2",
+      "signature": "()",
+      "stname": ""
+    }
+  ],
+  "igGetPlatformIO": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "igGetPlatformIO",
+      "defaults": [],
+      "funcname": "GetPlatformIO",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igGetPlatformIO",
+      "ret": "ImGuiPlatformIO*",
+      "retref": "&",
       "signature": "()",
       "stname": ""
     }
@@ -10662,6 +11025,38 @@
       "stname": ""
     }
   ],
+  "igGetWindowDockID": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "igGetWindowDockID",
+      "defaults": [],
+      "funcname": "GetWindowDockID",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igGetWindowDockID",
+      "ret": "ImGuiID",
+      "signature": "()",
+      "stname": ""
+    }
+  ],
+  "igGetWindowDpiScale": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "igGetWindowDpiScale",
+      "defaults": [],
+      "funcname": "GetWindowDpiScale",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igGetWindowDpiScale",
+      "ret": "float",
+      "signature": "()",
+      "stname": ""
+    }
+  ],
   "igGetWindowDrawList": [
     {
       "args": "()",
@@ -10794,6 +11189,22 @@
       "ov_cimguiname": "igGetWindowSize_nonUDT2",
       "ret": "ImVec2_Simple",
       "retorig": "ImVec2",
+      "signature": "()",
+      "stname": ""
+    }
+  ],
+  "igGetWindowViewport": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "igGetWindowViewport",
+      "defaults": [],
+      "funcname": "GetWindowViewport",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igGetWindowViewport",
+      "ret": "ImGuiViewport*",
       "signature": "()",
       "stname": ""
     }
@@ -12116,6 +12527,22 @@
       "stname": ""
     }
   ],
+  "igIsWindowDocked": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "igIsWindowDocked",
+      "defaults": [],
+      "funcname": "IsWindowDocked",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igIsWindowDocked",
+      "ret": "bool",
+      "signature": "()",
+      "stname": ""
+    }
+  ],
   "igIsWindowFocused": [
     {
       "args": "(ImGuiFocusedFlags flags)",
@@ -12806,14 +13233,14 @@
           "type": "int"
         }
       ],
-      "argsoriginal": "(const char* label,const float* values,int values_count,int values_offset=0,const char* overlay_text=((void*)0),float scale_min=3.40282346638528859811704183484516925e+38F,float scale_max=3.40282346638528859811704183484516925e+38F,ImVec2 graph_size=ImVec2(0,0),int stride=sizeof(float))",
+      "argsoriginal": "(const char* label,const float* values,int values_count,int values_offset=0,const char* overlay_text=((void*)0),float scale_min=3.402823466e+38F,float scale_max=3.402823466e+38F,ImVec2 graph_size=ImVec2(0,0),int stride=sizeof(float))",
       "call_args": "(label,values,values_count,values_offset,overlay_text,scale_min,scale_max,graph_size,stride)",
       "cimguiname": "igPlotHistogram",
       "defaults": {
         "graph_size": "ImVec2(0,0)",
         "overlay_text": "((void*)0)",
-        "scale_max": "FLT_MAX",
-        "scale_min": "FLT_MAX",
+        "scale_max": "3.402823466e+38F",
+        "scale_min": "3.402823466e+38F",
         "stride": "sizeof(float)",
         "values_offset": "0"
       },
@@ -12866,14 +13293,14 @@
           "type": "ImVec2"
         }
       ],
-      "argsoriginal": "(const char* label,float(*values_getter)(void* data,int idx),void* data,int values_count,int values_offset=0,const char* overlay_text=((void*)0),float scale_min=3.40282346638528859811704183484516925e+38F,float scale_max=3.40282346638528859811704183484516925e+38F,ImVec2 graph_size=ImVec2(0,0))",
+      "argsoriginal": "(const char* label,float(*values_getter)(void* data,int idx),void* data,int values_count,int values_offset=0,const char* overlay_text=((void*)0),float scale_min=3.402823466e+38F,float scale_max=3.402823466e+38F,ImVec2 graph_size=ImVec2(0,0))",
       "call_args": "(label,values_getter,data,values_count,values_offset,overlay_text,scale_min,scale_max,graph_size)",
       "cimguiname": "igPlotHistogram",
       "defaults": {
         "graph_size": "ImVec2(0,0)",
         "overlay_text": "((void*)0)",
-        "scale_max": "FLT_MAX",
-        "scale_min": "FLT_MAX",
+        "scale_max": "3.402823466e+38F",
+        "scale_min": "3.402823466e+38F",
         "values_offset": "0"
       },
       "funcname": "PlotHistogram",
@@ -12925,14 +13352,14 @@
           "type": "int"
         }
       ],
-      "argsoriginal": "(const char* label,const float* values,int values_count,int values_offset=0,const char* overlay_text=((void*)0),float scale_min=3.40282346638528859811704183484516925e+38F,float scale_max=3.40282346638528859811704183484516925e+38F,ImVec2 graph_size=ImVec2(0,0),int stride=sizeof(float))",
+      "argsoriginal": "(const char* label,const float* values,int values_count,int values_offset=0,const char* overlay_text=((void*)0),float scale_min=3.402823466e+38F,float scale_max=3.402823466e+38F,ImVec2 graph_size=ImVec2(0,0),int stride=sizeof(float))",
       "call_args": "(label,values,values_count,values_offset,overlay_text,scale_min,scale_max,graph_size,stride)",
       "cimguiname": "igPlotLines",
       "defaults": {
         "graph_size": "ImVec2(0,0)",
         "overlay_text": "((void*)0)",
-        "scale_max": "FLT_MAX",
-        "scale_min": "FLT_MAX",
+        "scale_max": "3.402823466e+38F",
+        "scale_min": "3.402823466e+38F",
         "stride": "sizeof(float)",
         "values_offset": "0"
       },
@@ -12985,14 +13412,14 @@
           "type": "ImVec2"
         }
       ],
-      "argsoriginal": "(const char* label,float(*values_getter)(void* data,int idx),void* data,int values_count,int values_offset=0,const char* overlay_text=((void*)0),float scale_min=3.40282346638528859811704183484516925e+38F,float scale_max=3.40282346638528859811704183484516925e+38F,ImVec2 graph_size=ImVec2(0,0))",
+      "argsoriginal": "(const char* label,float(*values_getter)(void* data,int idx),void* data,int values_count,int values_offset=0,const char* overlay_text=((void*)0),float scale_min=3.402823466e+38F,float scale_max=3.402823466e+38F,ImVec2 graph_size=ImVec2(0,0))",
       "call_args": "(label,values_getter,data,values_count,values_offset,overlay_text,scale_min,scale_max,graph_size)",
       "cimguiname": "igPlotLines",
       "defaults": {
         "graph_size": "ImVec2(0,0)",
         "overlay_text": "((void*)0)",
-        "scale_max": "FLT_MAX",
-        "scale_min": "FLT_MAX",
+        "scale_max": "3.402823466e+38F",
+        "scale_min": "3.402823466e+38F",
         "values_offset": "0"
       },
       "funcname": "PlotLines",
@@ -13572,6 +13999,34 @@
       "ov_cimguiname": "igRender",
       "ret": "void",
       "signature": "()",
+      "stname": ""
+    }
+  ],
+  "igRenderPlatformWindowsDefault": [
+    {
+      "args": "(void* platform_arg,void* renderer_arg)",
+      "argsT": [
+        {
+          "name": "platform_arg",
+          "type": "void*"
+        },
+        {
+          "name": "renderer_arg",
+          "type": "void*"
+        }
+      ],
+      "argsoriginal": "(void* platform_arg=((void*)0),void* renderer_arg=((void*)0))",
+      "call_args": "(platform_arg,renderer_arg)",
+      "cimguiname": "igRenderPlatformWindowsDefault",
+      "defaults": {
+        "platform_arg": "((void*)0)",
+        "renderer_arg": "((void*)0)"
+      },
+      "funcname": "RenderPlatformWindowsDefault",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igRenderPlatformWindowsDefault",
+      "ret": "void",
+      "signature": "(void*,void*)",
       "stname": ""
     }
   ],
@@ -14169,6 +14624,27 @@
       "stname": ""
     }
   ],
+  "igSetNextWindowClass": [
+    {
+      "args": "(const ImGuiWindowClass* window_class)",
+      "argsT": [
+        {
+          "name": "window_class",
+          "type": "const ImGuiWindowClass*"
+        }
+      ],
+      "argsoriginal": "(const ImGuiWindowClass* window_class)",
+      "call_args": "(window_class)",
+      "cimguiname": "igSetNextWindowClass",
+      "defaults": [],
+      "funcname": "SetNextWindowClass",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igSetNextWindowClass",
+      "ret": "void",
+      "signature": "(const ImGuiWindowClass*)",
+      "stname": ""
+    }
+  ],
   "igSetNextWindowCollapsed": [
     {
       "args": "(bool collapsed,ImGuiCond cond)",
@@ -14214,6 +14690,33 @@
       "ov_cimguiname": "igSetNextWindowContentSize",
       "ret": "void",
       "signature": "(const ImVec2)",
+      "stname": ""
+    }
+  ],
+  "igSetNextWindowDockID": [
+    {
+      "args": "(ImGuiID dock_id,ImGuiCond cond)",
+      "argsT": [
+        {
+          "name": "dock_id",
+          "type": "ImGuiID"
+        },
+        {
+          "name": "cond",
+          "type": "ImGuiCond"
+        }
+      ],
+      "argsoriginal": "(ImGuiID dock_id,ImGuiCond cond=0)",
+      "call_args": "(dock_id,cond)",
+      "cimguiname": "igSetNextWindowDockID",
+      "defaults": {
+        "cond": "0"
+      },
+      "funcname": "SetNextWindowDockID",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igSetNextWindowDockID",
+      "ret": "void",
+      "signature": "(ImGuiID,ImGuiCond)",
       "stname": ""
     }
   ],
@@ -14325,6 +14828,27 @@
       "ov_cimguiname": "igSetNextWindowSizeConstraints",
       "ret": "void",
       "signature": "(const ImVec2,const ImVec2,ImGuiSizeCallback,void*)",
+      "stname": ""
+    }
+  ],
+  "igSetNextWindowViewport": [
+    {
+      "args": "(ImGuiID viewport_id)",
+      "argsT": [
+        {
+          "name": "viewport_id",
+          "type": "ImGuiID"
+        }
+      ],
+      "argsoriginal": "(ImGuiID viewport_id)",
+      "call_args": "(viewport_id)",
+      "cimguiname": "igSetNextWindowViewport",
+      "defaults": [],
+      "funcname": "SetNextWindowViewport",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igSetNextWindowViewport",
+      "ret": "void",
+      "signature": "(ImGuiID)",
       "stname": ""
     }
   ],
@@ -16121,6 +16645,22 @@
       "ov_cimguiname": "igUnindent",
       "ret": "void",
       "signature": "(float)",
+      "stname": ""
+    }
+  ],
+  "igUpdatePlatformWindows": [
+    {
+      "args": "()",
+      "argsT": [],
+      "argsoriginal": "()",
+      "call_args": "()",
+      "cimguiname": "igUpdatePlatformWindows",
+      "defaults": [],
+      "funcname": "UpdatePlatformWindows",
+      "namespace": "ImGui",
+      "ov_cimguiname": "igUpdatePlatformWindows",
+      "ret": "void",
+      "signature": "()",
       "stname": ""
     }
   ],
