@@ -516,7 +516,7 @@ namespace ImGuiNET
             Marshal.FreeHGlobal(platformIO.NativePtr->Monitors.Data);
             int numMonitors = p_sdl_GetNumVideoDisplays();
             IntPtr data = Marshal.AllocHGlobal(Unsafe.SizeOf<ImGuiPlatformMonitor>() * numMonitors);
-            platformIO.NativePtr->Monitors = new ImVector(2, 2, data);
+            platformIO.NativePtr->Monitors = new ImVector(numMonitors, numMonitors, data);
             for (int i = 0; i < numMonitors; i++)
             {
                 Rectangle r;
