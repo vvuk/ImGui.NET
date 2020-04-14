@@ -1,7 +1,8 @@
 using System;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Unity.Mathematics;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ImGuiNET
 {

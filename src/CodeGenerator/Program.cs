@@ -20,11 +20,11 @@ namespace CodeGenerator
             { "ImWchar", "ushort" },
             { "unsigned short", "ushort" },
             { "unsigned int", "uint" },
-            { "ImVec2", "Vector2" },
-            { "ImVec2_Simple", "Vector2" },
-            { "ImVec3", "Vector3" },
-            { "ImVec4", "Vector4" },
-            { "ImVec4_Simple", "Vector4" },
+            { "ImVec2", "float2" },
+            { "ImVec2_Simple", "float2" },
+            { "ImVec3", "float3" },
+            { "ImVec4", "float4" },
+            { "ImVec4_Simple", "float4" },
             { "ImColor_Simple", "ImColor" },
             { "ImTextureID", "IntPtr" },
             { "ImGuiID", "uint" },
@@ -35,14 +35,14 @@ namespace CodeGenerator
             { "ImDrawCallback", "IntPtr" },
             { "size_t", "uint" },
             { "ImGuiContext*", "IntPtr" },
-            { "float[2]", "Vector2*" },
-            { "float[3]", "Vector3*" },
-            { "float[4]", "Vector4*" },
+            { "float[2]", "float2*" },
+            { "float[3]", "float3*" },
+            { "float[4]", "float4*" },
             { "int[2]", "int*" },
             { "int[3]", "int*" },
             { "int[4]", "int*" },
             { "float&", "float*" },
-            { "ImVec2[2]", "Vector2*" },
+            { "ImVec2[2]", "float2*" },
             { "char* []", "byte**" },
         };
 
@@ -63,13 +63,13 @@ namespace CodeGenerator
         {
             { "((void *)0)", "null" },
             { "((void*)0)", "null" },
-            { "ImVec2(0,0)", "new Vector2()" },
-            { "ImVec2(-1,0)", "new Vector2(-1, 0)" },
-            { "ImVec2(1,0)", "new Vector2(1, 0)" },
-            { "ImVec2(1,1)", "new Vector2(1, 1)" },
-            { "ImVec2(0,1)", "new Vector2(0, 1)" },
-            { "ImVec4(0,0,0,0)", "new Vector4()" },
-            { "ImVec4(1,1,1,1)", "new Vector4(1, 1, 1, 1)" },
+            { "ImVec2(0,0)", "new float2()" },
+            { "ImVec2(-1,0)", "new float2(-1, 0)" },
+            { "ImVec2(1,0)", "new float2(1, 0)" },
+            { "ImVec2(1,1)", "new float2(1, 1)" },
+            { "ImVec2(0,1)", "new float2(0, 1)" },
+            { "ImVec4(0,0,0,0)", "new float4()" },
+            { "ImVec4(1,1,1,1)", "new float4(1, 1, 1, 1)" },
             { "ImDrawCornerFlags_All", "ImDrawCornerFlags.All" },
             { "FLT_MAX", "float.MaxValue" },
             { "(((ImU32)(255)<<24)|((ImU32)(255)<<16)|((ImU32)(255)<<8)|((ImU32)(255)<<0))", "0xFFFFFFFF" }
@@ -292,9 +292,10 @@ namespace CodeGenerator
                 using (CSharpCodeWriter writer = new CSharpCodeWriter(Path.Combine(outputPath, td.Name + ".gen.cs")))
                 {
                     writer.Using("System");
-                    writer.Using("System.Numerics");
                     writer.Using("System.Runtime.CompilerServices");
                     writer.Using("System.Text");
+                    writer.Using("Unity.Mathematics");
+                    writer.Using("Unity.Collections.LowLevel.Unsafe");
                     writer.WriteLine(string.Empty);
                     writer.PushBlock("namespace ImGuiNET");
 
@@ -359,7 +360,7 @@ namespace CodeGenerator
 
                             if (GetWrappedType(vectorElementType + "*", out string wrappedElementType))
                             {
-                                writer.WriteLine($"public ImPtrVector<{wrappedElementType}> {field.Name} => new ImPtrVector<{wrappedElementType}>(NativePtr->{field.Name}, Unsafe.SizeOf<{vectorElementType}>());");
+                                writer.WriteLine($"public ImPtrVector<{wrappedElementType}> {field.Name} => new ImPtrVector<{wrappedElementType}>(NativePtr->{field.Name}, UnsafeUtility.SizeOf<{vectorElementType}>());");
                             }
                             else
                             {
@@ -389,7 +390,7 @@ namespace CodeGenerator
                             }
                             else
                             {
-                                writer.WriteLine($"public ref {typeStr} {field.Name} => ref Unsafe.AsRef<{typeStr}>(&NativePtr->{field.Name});");
+                                writer.WriteLine($"public ref {typeStr} {field.Name} => ref UnsafeUtility.AsRef<{typeStr}>(&NativePtr->{field.Name});");
                             }
                         }
                     }
@@ -456,8 +457,9 @@ namespace CodeGenerator
             using (CSharpCodeWriter writer = new CSharpCodeWriter(Path.Combine(outputPath, "ImGuiNative.gen.cs")))
             {
                 writer.Using("System");
-                writer.Using("System.Numerics");
                 writer.Using("System.Runtime.InteropServices");
+                writer.Using("Unity.Mathematics");
+                writer.Using("Unity.Collections.LowLevel.Unsafe");
                 writer.WriteLine(string.Empty);
                 writer.PushBlock("namespace ImGuiNET");
                 writer.PushBlock("public static unsafe partial class ImGuiNative");
@@ -522,9 +524,10 @@ namespace CodeGenerator
             using (CSharpCodeWriter writer = new CSharpCodeWriter(Path.Combine(outputPath, "ImGui.gen.cs")))
             {
                 writer.Using("System");
-                writer.Using("System.Numerics");
                 writer.Using("System.Runtime.InteropServices");
                 writer.Using("System.Text");
+                writer.Using("Unity.Mathematics");
+                writer.Using("Unity.Collections.LowLevel.Unsafe");
                 writer.WriteLine(string.Empty);
                 writer.PushBlock("namespace ImGuiNET");
                 writer.PushBlock("public static unsafe partial class ImGui");

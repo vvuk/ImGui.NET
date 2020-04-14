@@ -1,7 +1,8 @@
 using System;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Unity.Mathematics;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ImGuiNET
 {
@@ -17,7 +18,7 @@ namespace ImGuiNET
         public static implicit operator ImGuiStoragePtr(ImGuiStorage* nativePtr) => new ImGuiStoragePtr(nativePtr);
         public static implicit operator ImGuiStorage* (ImGuiStoragePtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImGuiStoragePtr(IntPtr nativePtr) => new ImGuiStoragePtr(nativePtr);
-        public ImPtrVector<ImGuiStoragePairPtr> Data => new ImPtrVector<ImGuiStoragePairPtr>(NativePtr->Data, Unsafe.SizeOf<ImGuiStoragePair>());
+        public ImPtrVector<ImGuiStoragePairPtr> Data => new ImPtrVector<ImGuiStoragePairPtr>(NativePtr->Data, UnsafeUtility.SizeOf<ImGuiStoragePair>());
         public void BuildSortByKey()
         {
             ImGuiNative.ImGuiStorage_BuildSortByKey(NativePtr);

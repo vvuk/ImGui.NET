@@ -1,16 +1,17 @@
 using System;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Unity.Mathematics;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ImGuiNET
 {
     public unsafe partial struct ImGuiSizeCallbackData
     {
         public void* UserData;
-        public Vector2 Pos;
-        public Vector2 CurrentSize;
-        public Vector2 DesiredSize;
+        public float2 Pos;
+        public float2 CurrentSize;
+        public float2 DesiredSize;
     }
     public unsafe partial struct ImGuiSizeCallbackDataPtr
     {
@@ -21,8 +22,8 @@ namespace ImGuiNET
         public static implicit operator ImGuiSizeCallbackData* (ImGuiSizeCallbackDataPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImGuiSizeCallbackDataPtr(IntPtr nativePtr) => new ImGuiSizeCallbackDataPtr(nativePtr);
         public IntPtr UserData { get => (IntPtr)NativePtr->UserData; set => NativePtr->UserData = (void*)value; }
-        public ref Vector2 Pos => ref Unsafe.AsRef<Vector2>(&NativePtr->Pos);
-        public ref Vector2 CurrentSize => ref Unsafe.AsRef<Vector2>(&NativePtr->CurrentSize);
-        public ref Vector2 DesiredSize => ref Unsafe.AsRef<Vector2>(&NativePtr->DesiredSize);
+        public ref float2 Pos => ref UnsafeUtility.AsRef<float2>(&NativePtr->Pos);
+        public ref float2 CurrentSize => ref UnsafeUtility.AsRef<float2>(&NativePtr->CurrentSize);
+        public ref float2 DesiredSize => ref UnsafeUtility.AsRef<float2>(&NativePtr->DesiredSize);
     }
 }

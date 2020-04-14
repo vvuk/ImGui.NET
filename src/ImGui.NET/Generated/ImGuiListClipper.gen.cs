@@ -1,7 +1,8 @@
 using System;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Unity.Mathematics;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ImGuiNET
 {
@@ -22,12 +23,12 @@ namespace ImGuiNET
         public static implicit operator ImGuiListClipperPtr(ImGuiListClipper* nativePtr) => new ImGuiListClipperPtr(nativePtr);
         public static implicit operator ImGuiListClipper* (ImGuiListClipperPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImGuiListClipperPtr(IntPtr nativePtr) => new ImGuiListClipperPtr(nativePtr);
-        public ref int DisplayStart => ref Unsafe.AsRef<int>(&NativePtr->DisplayStart);
-        public ref int DisplayEnd => ref Unsafe.AsRef<int>(&NativePtr->DisplayEnd);
-        public ref int ItemsCount => ref Unsafe.AsRef<int>(&NativePtr->ItemsCount);
-        public ref int StepNo => ref Unsafe.AsRef<int>(&NativePtr->StepNo);
-        public ref float ItemsHeight => ref Unsafe.AsRef<float>(&NativePtr->ItemsHeight);
-        public ref float StartPosY => ref Unsafe.AsRef<float>(&NativePtr->StartPosY);
+        public ref int DisplayStart => ref UnsafeUtility.AsRef<int>(&NativePtr->DisplayStart);
+        public ref int DisplayEnd => ref UnsafeUtility.AsRef<int>(&NativePtr->DisplayEnd);
+        public ref int ItemsCount => ref UnsafeUtility.AsRef<int>(&NativePtr->ItemsCount);
+        public ref int StepNo => ref UnsafeUtility.AsRef<int>(&NativePtr->StepNo);
+        public ref float ItemsHeight => ref UnsafeUtility.AsRef<float>(&NativePtr->ItemsHeight);
+        public ref float StartPosY => ref UnsafeUtility.AsRef<float>(&NativePtr->StartPosY);
         public void Begin(int items_count)
         {
             float items_height = -1.0f;

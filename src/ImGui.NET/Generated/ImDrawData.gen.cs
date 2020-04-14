@@ -1,7 +1,8 @@
 using System;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Unity.Mathematics;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ImGuiNET
 {
@@ -12,9 +13,9 @@ namespace ImGuiNET
         public int CmdListsCount;
         public int TotalIdxCount;
         public int TotalVtxCount;
-        public Vector2 DisplayPos;
-        public Vector2 DisplaySize;
-        public Vector2 FramebufferScale;
+        public float2 DisplayPos;
+        public float2 DisplaySize;
+        public float2 FramebufferScale;
     }
     public unsafe partial struct ImDrawDataPtr
     {
@@ -24,14 +25,14 @@ namespace ImGuiNET
         public static implicit operator ImDrawDataPtr(ImDrawData* nativePtr) => new ImDrawDataPtr(nativePtr);
         public static implicit operator ImDrawData* (ImDrawDataPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImDrawDataPtr(IntPtr nativePtr) => new ImDrawDataPtr(nativePtr);
-        public ref bool Valid => ref Unsafe.AsRef<bool>(&NativePtr->Valid);
+        public ref bool Valid => ref UnsafeUtility.AsRef<bool>(&NativePtr->Valid);
         public IntPtr CmdLists { get => (IntPtr)NativePtr->CmdLists; set => NativePtr->CmdLists = (ImDrawList**)value; }
-        public ref int CmdListsCount => ref Unsafe.AsRef<int>(&NativePtr->CmdListsCount);
-        public ref int TotalIdxCount => ref Unsafe.AsRef<int>(&NativePtr->TotalIdxCount);
-        public ref int TotalVtxCount => ref Unsafe.AsRef<int>(&NativePtr->TotalVtxCount);
-        public ref Vector2 DisplayPos => ref Unsafe.AsRef<Vector2>(&NativePtr->DisplayPos);
-        public ref Vector2 DisplaySize => ref Unsafe.AsRef<Vector2>(&NativePtr->DisplaySize);
-        public ref Vector2 FramebufferScale => ref Unsafe.AsRef<Vector2>(&NativePtr->FramebufferScale);
+        public ref int CmdListsCount => ref UnsafeUtility.AsRef<int>(&NativePtr->CmdListsCount);
+        public ref int TotalIdxCount => ref UnsafeUtility.AsRef<int>(&NativePtr->TotalIdxCount);
+        public ref int TotalVtxCount => ref UnsafeUtility.AsRef<int>(&NativePtr->TotalVtxCount);
+        public ref float2 DisplayPos => ref UnsafeUtility.AsRef<float2>(&NativePtr->DisplayPos);
+        public ref float2 DisplaySize => ref UnsafeUtility.AsRef<float2>(&NativePtr->DisplaySize);
+        public ref float2 FramebufferScale => ref UnsafeUtility.AsRef<float2>(&NativePtr->FramebufferScale);
         public void Clear()
         {
             ImGuiNative.ImDrawData_Clear(NativePtr);
@@ -44,7 +45,7 @@ namespace ImGuiNET
         {
             ImGuiNative.ImDrawData_destroy(NativePtr);
         }
-        public void ScaleClipRects(Vector2 fb_scale)
+        public void ScaleClipRects(float2 fb_scale)
         {
             ImGuiNative.ImDrawData_ScaleClipRects(NativePtr, fb_scale);
         }

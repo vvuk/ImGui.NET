@@ -1,13 +1,14 @@
 using System;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Unity.Mathematics;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ImGuiNET
 {
     public unsafe partial struct ImColor
     {
-        public Vector4 Value;
+        public float4 Value;
     }
     public unsafe partial struct ImColorPtr
     {
@@ -17,7 +18,7 @@ namespace ImGuiNET
         public static implicit operator ImColorPtr(ImColor* nativePtr) => new ImColorPtr(nativePtr);
         public static implicit operator ImColor* (ImColorPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImColorPtr(IntPtr nativePtr) => new ImColorPtr(nativePtr);
-        public ref Vector4 Value => ref Unsafe.AsRef<Vector4>(&NativePtr->Value);
+        public ref float4 Value => ref UnsafeUtility.AsRef<float4>(&NativePtr->Value);
         public void Destroy()
         {
             ImGuiNative.ImColor_destroy(NativePtr);

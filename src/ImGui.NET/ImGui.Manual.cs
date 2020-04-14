@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using Unity.Mathematics;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ImGuiNET
 {
@@ -128,8 +129,8 @@ namespace ImGuiNET
             }
             Util.GetUtf8(input, utf8InputBytes, inputBufSize);
             uint clearBytesCount = (uint)(inputBufSize - utf8InputByteCount);
-            Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
-            Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
+            //Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
+            //Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
 
             byte result = ImGuiNative.igInputText(
                 utf8LabelBytes,
@@ -160,20 +161,20 @@ namespace ImGuiNET
             string label,
             ref string input,
             uint maxLength,
-            Vector2 size) => InputTextMultiline(label, ref input, maxLength, size, 0, null, IntPtr.Zero);
+            float2 size) => InputTextMultiline(label, ref input, maxLength, size, 0, null, IntPtr.Zero);
 
         public static bool InputTextMultiline(
             string label,
             ref string input,
             uint maxLength,
-            Vector2 size,
+            float2 size,
             ImGuiInputTextFlags flags) => InputTextMultiline(label, ref input, maxLength, size, flags, null, IntPtr.Zero);
 
         public static bool InputTextMultiline(
             string label,
             ref string input,
             uint maxLength,
-            Vector2 size,
+            float2 size,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback) => InputTextMultiline(label, ref input, maxLength, size, flags, callback, IntPtr.Zero);
 
@@ -181,7 +182,7 @@ namespace ImGuiNET
             string label,
             ref string input,
             uint maxLength,
-            Vector2 size,
+            float2 size,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback,
             IntPtr user_data)

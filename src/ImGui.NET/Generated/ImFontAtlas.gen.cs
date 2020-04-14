@@ -1,7 +1,8 @@
 using System;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Unity.Mathematics;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ImGuiNET
 {
@@ -16,8 +17,8 @@ namespace ImGuiNET
         public uint* TexPixelsRGBA32;
         public int TexWidth;
         public int TexHeight;
-        public Vector2 TexUvScale;
-        public Vector2 TexUvWhitePixel;
+        public float2 TexUvScale;
+        public float2 TexUvWhitePixel;
         public ImVector Fonts;
         public ImVector CustomRects;
         public ImVector ConfigData;
@@ -31,29 +32,29 @@ namespace ImGuiNET
         public static implicit operator ImFontAtlasPtr(ImFontAtlas* nativePtr) => new ImFontAtlasPtr(nativePtr);
         public static implicit operator ImFontAtlas* (ImFontAtlasPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImFontAtlasPtr(IntPtr nativePtr) => new ImFontAtlasPtr(nativePtr);
-        public ref bool Locked => ref Unsafe.AsRef<bool>(&NativePtr->Locked);
-        public ref ImFontAtlasFlags Flags => ref Unsafe.AsRef<ImFontAtlasFlags>(&NativePtr->Flags);
-        public ref IntPtr TexID => ref Unsafe.AsRef<IntPtr>(&NativePtr->TexID);
-        public ref int TexDesiredWidth => ref Unsafe.AsRef<int>(&NativePtr->TexDesiredWidth);
-        public ref int TexGlyphPadding => ref Unsafe.AsRef<int>(&NativePtr->TexGlyphPadding);
+        public ref bool Locked => ref UnsafeUtility.AsRef<bool>(&NativePtr->Locked);
+        public ref ImFontAtlasFlags Flags => ref UnsafeUtility.AsRef<ImFontAtlasFlags>(&NativePtr->Flags);
+        public ref IntPtr TexID => ref UnsafeUtility.AsRef<IntPtr>(&NativePtr->TexID);
+        public ref int TexDesiredWidth => ref UnsafeUtility.AsRef<int>(&NativePtr->TexDesiredWidth);
+        public ref int TexGlyphPadding => ref UnsafeUtility.AsRef<int>(&NativePtr->TexGlyphPadding);
         public IntPtr TexPixelsAlpha8 { get => (IntPtr)NativePtr->TexPixelsAlpha8; set => NativePtr->TexPixelsAlpha8 = (byte*)value; }
         public IntPtr TexPixelsRGBA32 { get => (IntPtr)NativePtr->TexPixelsRGBA32; set => NativePtr->TexPixelsRGBA32 = (uint*)value; }
-        public ref int TexWidth => ref Unsafe.AsRef<int>(&NativePtr->TexWidth);
-        public ref int TexHeight => ref Unsafe.AsRef<int>(&NativePtr->TexHeight);
-        public ref Vector2 TexUvScale => ref Unsafe.AsRef<Vector2>(&NativePtr->TexUvScale);
-        public ref Vector2 TexUvWhitePixel => ref Unsafe.AsRef<Vector2>(&NativePtr->TexUvWhitePixel);
+        public ref int TexWidth => ref UnsafeUtility.AsRef<int>(&NativePtr->TexWidth);
+        public ref int TexHeight => ref UnsafeUtility.AsRef<int>(&NativePtr->TexHeight);
+        public ref float2 TexUvScale => ref UnsafeUtility.AsRef<float2>(&NativePtr->TexUvScale);
+        public ref float2 TexUvWhitePixel => ref UnsafeUtility.AsRef<float2>(&NativePtr->TexUvWhitePixel);
         public ImVector<ImFontPtr> Fonts => new ImVector<ImFontPtr>(NativePtr->Fonts);
-        public ImPtrVector<ImFontAtlasCustomRectPtr> CustomRects => new ImPtrVector<ImFontAtlasCustomRectPtr>(NativePtr->CustomRects, Unsafe.SizeOf<ImFontAtlasCustomRect>());
-        public ImPtrVector<ImFontConfigPtr> ConfigData => new ImPtrVector<ImFontConfigPtr>(NativePtr->ConfigData, Unsafe.SizeOf<ImFontConfig>());
+        public ImPtrVector<ImFontAtlasCustomRectPtr> CustomRects => new ImPtrVector<ImFontAtlasCustomRectPtr>(NativePtr->CustomRects, UnsafeUtility.SizeOf<ImFontAtlasCustomRect>());
+        public ImPtrVector<ImFontConfigPtr> ConfigData => new ImPtrVector<ImFontConfigPtr>(NativePtr->ConfigData, UnsafeUtility.SizeOf<ImFontConfig>());
         public RangeAccessor<int> CustomRectIds => new RangeAccessor<int>(NativePtr->CustomRectIds, 1);
         public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advance_x)
         {
             ImFont* native_font = font.NativePtr;
-            Vector2 offset = new Vector2();
+            float2 offset = new float2();
             int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph(NativePtr, native_font, id, width, height, advance_x, offset);
             return ret;
         }
-        public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advance_x, Vector2 offset)
+        public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advance_x, float2 offset)
         {
             ImFont* native_font = font.NativePtr;
             int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph(NativePtr, native_font, id, width, height, advance_x, offset);
@@ -309,12 +310,12 @@ namespace ImGuiNET
             byte ret = ImGuiNative.ImFontAtlas_Build(NativePtr);
             return ret != 0;
         }
-        public void CalcCustomRectUV(ImFontAtlasCustomRectPtr rect, out Vector2 out_uv_min, out Vector2 out_uv_max)
+        public void CalcCustomRectUV(ImFontAtlasCustomRectPtr rect, out float2 out_uv_min, out float2 out_uv_max)
         {
             ImFontAtlasCustomRect* native_rect = rect.NativePtr;
-            fixed (Vector2* native_out_uv_min = &out_uv_min)
+            fixed (float2* native_out_uv_min = &out_uv_min)
             {
-                fixed (Vector2* native_out_uv_max = &out_uv_max)
+                fixed (float2* native_out_uv_max = &out_uv_max)
                 {
                     ImGuiNative.ImFontAtlas_CalcCustomRectUV(NativePtr, native_rect, native_out_uv_min, native_out_uv_max);
                 }
@@ -385,15 +386,15 @@ namespace ImGuiNET
             ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesVietnamese(NativePtr);
             return (IntPtr)ret;
         }
-        public bool GetMouseCursorTexData(ImGuiMouseCursor cursor, out Vector2 out_offset, out Vector2 out_size, out Vector2 out_uv_border, out Vector2 out_uv_fill)
+        public bool GetMouseCursorTexData(ImGuiMouseCursor cursor, out float2 out_offset, out float2 out_size, out float2 out_uv_border, out float2 out_uv_fill)
         {
-            fixed (Vector2* native_out_offset = &out_offset)
+            fixed (float2* native_out_offset = &out_offset)
             {
-                fixed (Vector2* native_out_size = &out_size)
+                fixed (float2* native_out_size = &out_size)
                 {
-                    fixed (Vector2* native_out_uv_border = &out_uv_border)
+                    fixed (float2* native_out_uv_border = &out_uv_border)
                     {
-                        fixed (Vector2* native_out_uv_fill = &out_uv_fill)
+                        fixed (float2* native_out_uv_fill = &out_uv_fill)
                         {
                             byte ret = ImGuiNative.ImFontAtlas_GetMouseCursorTexData(NativePtr, cursor, native_out_offset, native_out_size, native_out_uv_border, native_out_uv_fill);
                             return ret != 0;

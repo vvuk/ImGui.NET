@@ -1,11 +1,11 @@
-﻿using System.Numerics;
-using System.Text;
+﻿using System.Text;
+using Unity.Mathematics;
 
 namespace ImGuiNET
 {
     public unsafe partial struct ImDrawListPtr
     {
-        public void AddText(Vector2 pos, uint col, string text_begin)
+        public void AddText(float2 pos, uint col, string text_begin)
         {
             int text_begin_byteCount = Encoding.UTF8.GetByteCount(text_begin);
             byte* native_text_begin = stackalloc byte[text_begin_byteCount + 1];
@@ -18,7 +18,7 @@ namespace ImGuiNET
             ImGuiNative.ImDrawList_AddText(NativePtr, pos, col, native_text_begin, native_text_end);
         }
 
-        public void AddText(ImFontPtr font, float font_size, Vector2 pos, uint col, string text_begin)
+        public void AddText(ImFontPtr font, float font_size, float2 pos, uint col, string text_begin)
         {
             ImFont* native_font = font.NativePtr;
             int text_begin_byteCount = Encoding.UTF8.GetByteCount(text_begin);
@@ -30,7 +30,7 @@ namespace ImGuiNET
             }
             byte* native_text_end = null;
             float wrap_width = 0.0f;
-            Vector4* cpu_fine_clip_rect = null;
+            float4* cpu_fine_clip_rect = null;
             ImGuiNative.ImDrawList_AddTextFontPtr(NativePtr, native_font, font_size, pos, col, native_text_begin, native_text_end, wrap_width, cpu_fine_clip_rect);
         }
     }
