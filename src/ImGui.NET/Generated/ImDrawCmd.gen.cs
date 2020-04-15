@@ -24,12 +24,12 @@ namespace ImGuiNET
         public static implicit operator ImDrawCmdPtr(ImDrawCmd* nativePtr) => new ImDrawCmdPtr(nativePtr);
         public static implicit operator ImDrawCmd* (ImDrawCmdPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImDrawCmdPtr(IntPtr nativePtr) => new ImDrawCmdPtr(nativePtr);
-        public ref uint ElemCount => ref UnsafeUtility.AsRef<uint>(&NativePtr->ElemCount);
-        public ref float4 ClipRect => ref UnsafeUtility.AsRef<float4>(&NativePtr->ClipRect);
-        public ref IntPtr TextureId => ref UnsafeUtility.AsRef<IntPtr>(&NativePtr->TextureId);
-        public ref uint VtxOffset => ref UnsafeUtility.AsRef<uint>(&NativePtr->VtxOffset);
-        public ref uint IdxOffset => ref UnsafeUtility.AsRef<uint>(&NativePtr->IdxOffset);
-        public ref IntPtr UserCallback => ref UnsafeUtility.AsRef<IntPtr>(&NativePtr->UserCallback);
+        public ref uint ElemCount => ref UnsafeUtilityEx.AsRef<uint>(&NativePtr->ElemCount);
+        public ref float4 ClipRect => ref UnsafeUtilityEx.AsRef<float4>(&NativePtr->ClipRect);
+        public ref IntPtr TextureId => ref UnsafeUtilityEx.AsRef<IntPtr>(&NativePtr->TextureId);
+        public ref uint VtxOffset => ref UnsafeUtilityEx.AsRef<uint>(&NativePtr->VtxOffset);
+        public ref uint IdxOffset => ref UnsafeUtilityEx.AsRef<uint>(&NativePtr->IdxOffset);
+        public ref IntPtr UserCallback => ref UnsafeUtilityEx.AsRef<IntPtr>(&NativePtr->UserCallback);
         public IntPtr UserCallbackData { get => (IntPtr)NativePtr->UserCallbackData; set => NativePtr->UserCallbackData = (void*)value; }
         public void Destroy()
         {

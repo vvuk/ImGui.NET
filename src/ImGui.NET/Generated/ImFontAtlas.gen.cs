@@ -32,17 +32,17 @@ namespace ImGuiNET
         public static implicit operator ImFontAtlasPtr(ImFontAtlas* nativePtr) => new ImFontAtlasPtr(nativePtr);
         public static implicit operator ImFontAtlas* (ImFontAtlasPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImFontAtlasPtr(IntPtr nativePtr) => new ImFontAtlasPtr(nativePtr);
-        public ref bool Locked => ref UnsafeUtility.AsRef<bool>(&NativePtr->Locked);
-        public ref ImFontAtlasFlags Flags => ref UnsafeUtility.AsRef<ImFontAtlasFlags>(&NativePtr->Flags);
-        public ref IntPtr TexID => ref UnsafeUtility.AsRef<IntPtr>(&NativePtr->TexID);
-        public ref int TexDesiredWidth => ref UnsafeUtility.AsRef<int>(&NativePtr->TexDesiredWidth);
-        public ref int TexGlyphPadding => ref UnsafeUtility.AsRef<int>(&NativePtr->TexGlyphPadding);
+        public ref bool Locked => ref UnsafeUtilityEx.AsRef<bool>(&NativePtr->Locked);
+        public ref ImFontAtlasFlags Flags => ref UnsafeUtilityEx.AsRef<ImFontAtlasFlags>(&NativePtr->Flags);
+        public ref IntPtr TexID => ref UnsafeUtilityEx.AsRef<IntPtr>(&NativePtr->TexID);
+        public ref int TexDesiredWidth => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->TexDesiredWidth);
+        public ref int TexGlyphPadding => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->TexGlyphPadding);
         public IntPtr TexPixelsAlpha8 { get => (IntPtr)NativePtr->TexPixelsAlpha8; set => NativePtr->TexPixelsAlpha8 = (byte*)value; }
         public IntPtr TexPixelsRGBA32 { get => (IntPtr)NativePtr->TexPixelsRGBA32; set => NativePtr->TexPixelsRGBA32 = (uint*)value; }
-        public ref int TexWidth => ref UnsafeUtility.AsRef<int>(&NativePtr->TexWidth);
-        public ref int TexHeight => ref UnsafeUtility.AsRef<int>(&NativePtr->TexHeight);
-        public ref float2 TexUvScale => ref UnsafeUtility.AsRef<float2>(&NativePtr->TexUvScale);
-        public ref float2 TexUvWhitePixel => ref UnsafeUtility.AsRef<float2>(&NativePtr->TexUvWhitePixel);
+        public ref int TexWidth => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->TexWidth);
+        public ref int TexHeight => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->TexHeight);
+        public ref float2 TexUvScale => ref UnsafeUtilityEx.AsRef<float2>(&NativePtr->TexUvScale);
+        public ref float2 TexUvWhitePixel => ref UnsafeUtilityEx.AsRef<float2>(&NativePtr->TexUvWhitePixel);
         public ImVector<ImFontPtr> Fonts => new ImVector<ImFontPtr>(NativePtr->Fonts);
         public ImPtrVector<ImFontAtlasCustomRectPtr> CustomRects => new ImPtrVector<ImFontAtlasCustomRectPtr>(NativePtr->CustomRects, UnsafeUtility.SizeOf<ImFontAtlasCustomRect>());
         public ImPtrVector<ImFontConfigPtr> ConfigData => new ImPtrVector<ImFontConfigPtr>(NativePtr->ConfigData, UnsafeUtility.SizeOf<ImFontConfig>());

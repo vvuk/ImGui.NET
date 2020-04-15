@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -58,7 +58,7 @@ namespace ImGuiNET
             Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
 
             bool ret;
-            fixed (byte* bufPtr = buf)
+            fixed(byte* bufPtr = buf)
             {
                 ret = ImGuiNative.igInputText(utf8LabelBytes, bufPtr, buf_size, flags, callback, user_data.ToPointer()) != 0;
             }
@@ -219,8 +219,8 @@ namespace ImGuiNET
             }
             Util.GetUtf8(input, utf8InputBytes, inputBufSize);
             uint clearBytesCount = (uint)(inputBufSize - utf8InputByteCount);
-            Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
-            Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
+            UnsafeUtility.MemSet(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
+            UnsafeUtility.MemCpy(originalUtf8InputBytes, utf8InputBytes, inputBufSize);
 
             byte result = ImGuiNative.igInputTextMultiline(
                 utf8LabelBytes,

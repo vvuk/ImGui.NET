@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using Unity.Mathematics;
 
 namespace ImGuiNET
@@ -9,7 +9,7 @@ namespace ImGuiNET
         {
             int text_begin_byteCount = Encoding.UTF8.GetByteCount(text_begin);
             byte* native_text_begin = stackalloc byte[text_begin_byteCount + 1];
-            fixed (char* text_begin_ptr = text_begin)
+            fixed(char* text_begin_ptr = text_begin)
             {
                 int native_text_begin_offset = Encoding.UTF8.GetBytes(text_begin_ptr, text_begin.Length, native_text_begin, text_begin_byteCount);
                 native_text_begin[native_text_begin_offset] = 0;
@@ -23,7 +23,7 @@ namespace ImGuiNET
             ImFont* native_font = font.NativePtr;
             int text_begin_byteCount = Encoding.UTF8.GetByteCount(text_begin);
             byte* native_text_begin = stackalloc byte[text_begin_byteCount + 1];
-            fixed (char* text_begin_ptr = text_begin)
+            fixed(char* text_begin_ptr = text_begin)
             {
                 int native_text_begin_offset = Encoding.UTF8.GetBytes(text_begin_ptr, text_begin.Length, native_text_begin, text_begin_byteCount);
                 native_text_begin[native_text_begin_offset] = 0;

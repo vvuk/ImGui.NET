@@ -26,13 +26,13 @@ namespace ImGuiNET
         public static implicit operator ImGuiPayload* (ImGuiPayloadPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImGuiPayloadPtr(IntPtr nativePtr) => new ImGuiPayloadPtr(nativePtr);
         public IntPtr Data { get => (IntPtr)NativePtr->Data; set => NativePtr->Data = (void*)value; }
-        public ref int DataSize => ref UnsafeUtility.AsRef<int>(&NativePtr->DataSize);
-        public ref uint SourceId => ref UnsafeUtility.AsRef<uint>(&NativePtr->SourceId);
-        public ref uint SourceParentId => ref UnsafeUtility.AsRef<uint>(&NativePtr->SourceParentId);
-        public ref int DataFrameCount => ref UnsafeUtility.AsRef<int>(&NativePtr->DataFrameCount);
+        public ref int DataSize => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->DataSize);
+        public ref uint SourceId => ref UnsafeUtilityEx.AsRef<uint>(&NativePtr->SourceId);
+        public ref uint SourceParentId => ref UnsafeUtilityEx.AsRef<uint>(&NativePtr->SourceParentId);
+        public ref int DataFrameCount => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->DataFrameCount);
         public RangeAccessor<byte> DataType => new RangeAccessor<byte>(NativePtr->DataType, 33);
-        public ref bool Preview => ref UnsafeUtility.AsRef<bool>(&NativePtr->Preview);
-        public ref bool Delivery => ref UnsafeUtility.AsRef<bool>(&NativePtr->Delivery);
+        public ref bool Preview => ref UnsafeUtilityEx.AsRef<bool>(&NativePtr->Preview);
+        public ref bool Delivery => ref UnsafeUtilityEx.AsRef<bool>(&NativePtr->Delivery);
         public void Clear()
         {
             ImGuiNative.ImGuiPayload_Clear(NativePtr);

@@ -20,8 +20,8 @@ namespace ImGuiNET
         public static implicit operator ImDrawVertPtr(ImDrawVert* nativePtr) => new ImDrawVertPtr(nativePtr);
         public static implicit operator ImDrawVert* (ImDrawVertPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImDrawVertPtr(IntPtr nativePtr) => new ImDrawVertPtr(nativePtr);
-        public ref float2 pos => ref UnsafeUtility.AsRef<float2>(&NativePtr->pos);
-        public ref float2 uv => ref UnsafeUtility.AsRef<float2>(&NativePtr->uv);
-        public ref uint col => ref UnsafeUtility.AsRef<uint>(&NativePtr->col);
+        public ref float2 pos => ref UnsafeUtilityEx.AsRef<float2>(&NativePtr->pos);
+        public ref float2 uv => ref UnsafeUtilityEx.AsRef<float2>(&NativePtr->uv);
+        public ref uint col => ref UnsafeUtilityEx.AsRef<uint>(&NativePtr->col);
     }
 }

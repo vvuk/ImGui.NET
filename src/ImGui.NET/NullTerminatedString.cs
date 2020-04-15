@@ -1,4 +1,5 @@
-﻿using System.Text;
+using System;
+using System.Text;
 
 namespace ImGuiNET
 {
@@ -21,7 +22,11 @@ namespace ImGuiNET
                 ptr += 1;
             }
 
-            return Encoding.ASCII.GetString(Data, length);
+            char* chars = stackalloc char[length];
+            for (int i = 0; i < length; ++i)
+                chars[i] = (char)Data[i];
+            return new string(chars);
+            //return Encoding.ASCII.GetString(Data, length);
         }
 
         public static implicit operator string(NullTerminatedString nts) => nts.ToString();

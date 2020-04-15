@@ -1,17 +1,18 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ImGuiNET
 {
     public unsafe struct RangeAccessor<T> where T : struct
     {
-        private static readonly int s_sizeOfT = Unsafe.SizeOf<T>();
+        private static readonly int s_sizeOfT = UnsafeUtility.SizeOf<T>();
 
         public readonly void* Data;
         public readonly int Count;
 
-        public RangeAccessor(IntPtr data, int count) : this(data.ToPointer(), count) { }
+        public RangeAccessor(IntPtr data, int count) : this(data.ToPointer(), count) {}
         public RangeAccessor(void* data, int count)
         {
             Data = data;
@@ -27,7 +28,7 @@ namespace ImGuiNET
                     throw new IndexOutOfRangeException();
                 }
 
-                return ref Unsafe.AsRef<T>((byte*)Data + s_sizeOfT * index);
+                return ref UnsafeUtility.AsRef<T>((byte*)Data + s_sizeOfT * index);
             }
         }
     }
@@ -37,7 +38,7 @@ namespace ImGuiNET
         public readonly void* Data;
         public readonly int Count;
 
-        public RangePtrAccessor(IntPtr data, int count) : this(data.ToPointer(), count) { }
+        public RangePtrAccessor(IntPtr data, int count) : this(data.ToPointer(), count) {}
         public RangePtrAccessor(void* data, int count)
         {
             Data = data;
@@ -53,7 +54,8 @@ namespace ImGuiNET
                     throw new IndexOutOfRangeException();
                 }
 
-                return Unsafe.Read<T>((byte*)Data + sizeof(void*) * index);
+                //return Unsafe.Read<T>((byte*)Data + sizeof(void*) * index);
+                return UnsafeUtility.AsRef<T>((byte*)Data + sizeof(void*) * index);
             }
         }
     }
@@ -62,7 +64,11 @@ namespace ImGuiNET
     {
         public static unsafe string GetStringASCII(this RangeAccessor<byte> stringAccessor)
         {
-            return Encoding.ASCII.GetString((byte*)stringAccessor.Data, stringAccessor.Count);
+            char* chars = stackalloc char[stringAccessor.Count];
+            for (int i = 0; i < stringAccessor.Count; ++i)
+                chars[i] = (char)stringAccessor[i];
+            return new string(chars);
+            //return Encoding.ASCII.GetString((byte*)stringAccessor.Data, stringAccessor.Count);
         }
     }
 }

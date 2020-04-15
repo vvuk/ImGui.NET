@@ -22,7 +22,7 @@ namespace ImGuiNET
         public static implicit operator ImGuiTextFilterPtr(IntPtr nativePtr) => new ImGuiTextFilterPtr(nativePtr);
         public RangeAccessor<byte> InputBuf => new RangeAccessor<byte>(NativePtr->InputBuf, 256);
         public ImPtrVector<ImGuiTextRangePtr> Filters => new ImPtrVector<ImGuiTextRangePtr>(NativePtr->Filters, UnsafeUtility.SizeOf<ImGuiTextRange>());
-        public ref int CountGrep => ref UnsafeUtility.AsRef<int>(&NativePtr->CountGrep);
+        public ref int CountGrep => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->CountGrep);
         public void Build()
         {
             ImGuiNative.ImGuiTextFilter_Build(NativePtr);

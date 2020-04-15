@@ -23,12 +23,12 @@ namespace ImGuiNET
         public static implicit operator ImGuiListClipperPtr(ImGuiListClipper* nativePtr) => new ImGuiListClipperPtr(nativePtr);
         public static implicit operator ImGuiListClipper* (ImGuiListClipperPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImGuiListClipperPtr(IntPtr nativePtr) => new ImGuiListClipperPtr(nativePtr);
-        public ref int DisplayStart => ref UnsafeUtility.AsRef<int>(&NativePtr->DisplayStart);
-        public ref int DisplayEnd => ref UnsafeUtility.AsRef<int>(&NativePtr->DisplayEnd);
-        public ref int ItemsCount => ref UnsafeUtility.AsRef<int>(&NativePtr->ItemsCount);
-        public ref int StepNo => ref UnsafeUtility.AsRef<int>(&NativePtr->StepNo);
-        public ref float ItemsHeight => ref UnsafeUtility.AsRef<float>(&NativePtr->ItemsHeight);
-        public ref float StartPosY => ref UnsafeUtility.AsRef<float>(&NativePtr->StartPosY);
+        public ref int DisplayStart => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->DisplayStart);
+        public ref int DisplayEnd => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->DisplayEnd);
+        public ref int ItemsCount => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->ItemsCount);
+        public ref int StepNo => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->StepNo);
+        public ref float ItemsHeight => ref UnsafeUtilityEx.AsRef<float>(&NativePtr->ItemsHeight);
+        public ref float StartPosY => ref UnsafeUtilityEx.AsRef<float>(&NativePtr->StartPosY);
         public void Begin(int items_count)
         {
             float items_height = -1.0f;

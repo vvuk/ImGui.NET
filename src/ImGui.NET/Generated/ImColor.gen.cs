@@ -18,7 +18,7 @@ namespace ImGuiNET
         public static implicit operator ImColorPtr(ImColor* nativePtr) => new ImColorPtr(nativePtr);
         public static implicit operator ImColor* (ImColorPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImColorPtr(IntPtr nativePtr) => new ImColorPtr(nativePtr);
-        public ref float4 Value => ref UnsafeUtility.AsRef<float4>(&NativePtr->Value);
+        public ref float4 Value => ref UnsafeUtilityEx.AsRef<float4>(&NativePtr->Value);
         public void Destroy()
         {
             ImGuiNative.ImColor_destroy(NativePtr);

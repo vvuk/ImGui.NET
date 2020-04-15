@@ -1,6 +1,8 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ImGuiNET
 {
@@ -31,11 +33,11 @@ namespace ImGuiNET
             return true;
         }
 
-        internal static byte* Allocate(int byteCount) => (byte*)Marshal.AllocHGlobal(byteCount);
-        internal static void Free(byte* ptr) => Marshal.FreeHGlobal((IntPtr)ptr);
+        internal static byte* Allocate(int byteCount) => (byte*)UnsafeUtility.Malloc(byteCount, 16, Allocator.Persistent);
+        internal static void Free(byte* ptr) => UnsafeUtility.Free(ptr, Allocator.Persistent);
         internal static int GetUtf8(string s, byte* utf8Bytes, int utf8ByteCount)
         {
-            fixed (char* utf16Ptr = s)
+            fixed(char* utf16Ptr = s)
             {
                 return Encoding.UTF8.GetBytes(utf16Ptr, s.Length, utf8Bytes, utf8ByteCount);
             }

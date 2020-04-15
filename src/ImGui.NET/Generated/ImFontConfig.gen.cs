@@ -37,22 +37,22 @@ namespace ImGuiNET
         public static implicit operator ImFontConfig* (ImFontConfigPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImFontConfigPtr(IntPtr nativePtr) => new ImFontConfigPtr(nativePtr);
         public IntPtr FontData { get => (IntPtr)NativePtr->FontData; set => NativePtr->FontData = (void*)value; }
-        public ref int FontDataSize => ref UnsafeUtility.AsRef<int>(&NativePtr->FontDataSize);
-        public ref bool FontDataOwnedByAtlas => ref UnsafeUtility.AsRef<bool>(&NativePtr->FontDataOwnedByAtlas);
-        public ref int FontNo => ref UnsafeUtility.AsRef<int>(&NativePtr->FontNo);
-        public ref float SizePixels => ref UnsafeUtility.AsRef<float>(&NativePtr->SizePixels);
-        public ref int OversampleH => ref UnsafeUtility.AsRef<int>(&NativePtr->OversampleH);
-        public ref int OversampleV => ref UnsafeUtility.AsRef<int>(&NativePtr->OversampleV);
-        public ref bool PixelSnapH => ref UnsafeUtility.AsRef<bool>(&NativePtr->PixelSnapH);
-        public ref float2 GlyphExtraSpacing => ref UnsafeUtility.AsRef<float2>(&NativePtr->GlyphExtraSpacing);
-        public ref float2 GlyphOffset => ref UnsafeUtility.AsRef<float2>(&NativePtr->GlyphOffset);
+        public ref int FontDataSize => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->FontDataSize);
+        public ref bool FontDataOwnedByAtlas => ref UnsafeUtilityEx.AsRef<bool>(&NativePtr->FontDataOwnedByAtlas);
+        public ref int FontNo => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->FontNo);
+        public ref float SizePixels => ref UnsafeUtilityEx.AsRef<float>(&NativePtr->SizePixels);
+        public ref int OversampleH => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->OversampleH);
+        public ref int OversampleV => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->OversampleV);
+        public ref bool PixelSnapH => ref UnsafeUtilityEx.AsRef<bool>(&NativePtr->PixelSnapH);
+        public ref float2 GlyphExtraSpacing => ref UnsafeUtilityEx.AsRef<float2>(&NativePtr->GlyphExtraSpacing);
+        public ref float2 GlyphOffset => ref UnsafeUtilityEx.AsRef<float2>(&NativePtr->GlyphOffset);
         public IntPtr GlyphRanges { get => (IntPtr)NativePtr->GlyphRanges; set => NativePtr->GlyphRanges = (ushort*)value; }
-        public ref float GlyphMinAdvanceX => ref UnsafeUtility.AsRef<float>(&NativePtr->GlyphMinAdvanceX);
-        public ref float GlyphMaxAdvanceX => ref UnsafeUtility.AsRef<float>(&NativePtr->GlyphMaxAdvanceX);
-        public ref bool MergeMode => ref UnsafeUtility.AsRef<bool>(&NativePtr->MergeMode);
-        public ref uint RasterizerFlags => ref UnsafeUtility.AsRef<uint>(&NativePtr->RasterizerFlags);
-        public ref float RasterizerMultiply => ref UnsafeUtility.AsRef<float>(&NativePtr->RasterizerMultiply);
-        public ref ushort EllipsisChar => ref UnsafeUtility.AsRef<ushort>(&NativePtr->EllipsisChar);
+        public ref float GlyphMinAdvanceX => ref UnsafeUtilityEx.AsRef<float>(&NativePtr->GlyphMinAdvanceX);
+        public ref float GlyphMaxAdvanceX => ref UnsafeUtilityEx.AsRef<float>(&NativePtr->GlyphMaxAdvanceX);
+        public ref bool MergeMode => ref UnsafeUtilityEx.AsRef<bool>(&NativePtr->MergeMode);
+        public ref uint RasterizerFlags => ref UnsafeUtilityEx.AsRef<uint>(&NativePtr->RasterizerFlags);
+        public ref float RasterizerMultiply => ref UnsafeUtilityEx.AsRef<float>(&NativePtr->RasterizerMultiply);
+        public ref ushort EllipsisChar => ref UnsafeUtilityEx.AsRef<ushort>(&NativePtr->EllipsisChar);
         public RangeAccessor<byte> Name => new RangeAccessor<byte>(NativePtr->Name, 40);
         public ImFontPtr DstFont => new ImFontPtr(NativePtr->DstFont);
         public void Destroy()

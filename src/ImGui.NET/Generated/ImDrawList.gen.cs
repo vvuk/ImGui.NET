@@ -34,17 +34,17 @@ namespace ImGuiNET
         public ImPtrVector<ImDrawCmdPtr> CmdBuffer => new ImPtrVector<ImDrawCmdPtr>(NativePtr->CmdBuffer, UnsafeUtility.SizeOf<ImDrawCmd>());
         public ImVector<ushort> IdxBuffer => new ImVector<ushort>(NativePtr->IdxBuffer);
         public ImPtrVector<ImDrawVertPtr> VtxBuffer => new ImPtrVector<ImDrawVertPtr>(NativePtr->VtxBuffer, UnsafeUtility.SizeOf<ImDrawVert>());
-        public ref ImDrawListFlags Flags => ref UnsafeUtility.AsRef<ImDrawListFlags>(&NativePtr->Flags);
-        public ref IntPtr _Data => ref UnsafeUtility.AsRef<IntPtr>(&NativePtr->_Data);
+        public ref ImDrawListFlags Flags => ref UnsafeUtilityEx.AsRef<ImDrawListFlags>(&NativePtr->Flags);
+        public ref IntPtr _Data => ref UnsafeUtilityEx.AsRef<IntPtr>(&NativePtr->_Data);
         public NullTerminatedString _OwnerName => new NullTerminatedString(NativePtr->_OwnerName);
-        public ref uint _VtxCurrentOffset => ref UnsafeUtility.AsRef<uint>(&NativePtr->_VtxCurrentOffset);
-        public ref uint _VtxCurrentIdx => ref UnsafeUtility.AsRef<uint>(&NativePtr->_VtxCurrentIdx);
+        public ref uint _VtxCurrentOffset => ref UnsafeUtilityEx.AsRef<uint>(&NativePtr->_VtxCurrentOffset);
+        public ref uint _VtxCurrentIdx => ref UnsafeUtilityEx.AsRef<uint>(&NativePtr->_VtxCurrentIdx);
         public ImDrawVertPtr _VtxWritePtr => new ImDrawVertPtr(NativePtr->_VtxWritePtr);
         public IntPtr _IdxWritePtr { get => (IntPtr)NativePtr->_IdxWritePtr; set => NativePtr->_IdxWritePtr = (ushort*)value; }
         public ImVector<float4> _ClipRectStack => new ImVector<float4>(NativePtr->_ClipRectStack);
         public ImVector<IntPtr> _TextureIdStack => new ImVector<IntPtr>(NativePtr->_TextureIdStack);
         public ImVector<float2> _Path => new ImVector<float2>(NativePtr->_Path);
-        public ref ImDrawListSplitter _Splitter => ref UnsafeUtility.AsRef<ImDrawListSplitter>(&NativePtr->_Splitter);
+        public ref ImDrawListSplitter _Splitter => ref UnsafeUtilityEx.AsRef<ImDrawListSplitter>(&NativePtr->_Splitter);
         public void AddBezierCurve(float2 p1, float2 p2, float2 p3, float2 p4, uint col, float thickness)
         {
             int num_segments = 0;

@@ -202,7 +202,7 @@ namespace CodeGenerator
                         exportedName = cimguiname;
                     }
 
-                    if (hasNonUdtVariants && !exportedName.EndsWith("nonUDT2"))
+                    if (hasNonUdtVariants && val["nonUDT"]?.ToString() != "2")
                     {
                         return null;
                     }
@@ -390,7 +390,7 @@ namespace CodeGenerator
                             }
                             else
                             {
-                                writer.WriteLine($"public ref {typeStr} {field.Name} => ref UnsafeUtility.AsRef<{typeStr}>(&NativePtr->{field.Name});");
+                                writer.WriteLine($"public ref {typeStr} {field.Name} => ref UnsafeUtilityEx.AsRef<{typeStr}>(&NativePtr->{field.Name});");
                             }
                         }
                     }
@@ -507,12 +507,12 @@ namespace CodeGenerator
 
                         if (isUdtVariant)
                         {
-                            writer.WriteLine($"[DllImport(\"cimgui\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"{exportedName}\")]");
+                            writer.WriteLine($"[DllImport(ImGuiDllName.DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = \"{exportedName}\")]");
 
                         }
                         else
                         {
-                            writer.WriteLine("[DllImport(\"cimgui\", CallingConvention = CallingConvention.Cdecl)]");
+                            writer.WriteLine("[DllImport(ImGuiDllName.DllName, CallingConvention = CallingConvention.Cdecl)]");
                         }
                         writer.WriteLine($"public static extern {ret} {methodName}({parameters});");
                     }

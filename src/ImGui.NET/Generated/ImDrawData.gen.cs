@@ -25,14 +25,14 @@ namespace ImGuiNET
         public static implicit operator ImDrawDataPtr(ImDrawData* nativePtr) => new ImDrawDataPtr(nativePtr);
         public static implicit operator ImDrawData* (ImDrawDataPtr wrappedPtr) => wrappedPtr.NativePtr;
         public static implicit operator ImDrawDataPtr(IntPtr nativePtr) => new ImDrawDataPtr(nativePtr);
-        public ref bool Valid => ref UnsafeUtility.AsRef<bool>(&NativePtr->Valid);
+        public ref bool Valid => ref UnsafeUtilityEx.AsRef<bool>(&NativePtr->Valid);
         public IntPtr CmdLists { get => (IntPtr)NativePtr->CmdLists; set => NativePtr->CmdLists = (ImDrawList**)value; }
-        public ref int CmdListsCount => ref UnsafeUtility.AsRef<int>(&NativePtr->CmdListsCount);
-        public ref int TotalIdxCount => ref UnsafeUtility.AsRef<int>(&NativePtr->TotalIdxCount);
-        public ref int TotalVtxCount => ref UnsafeUtility.AsRef<int>(&NativePtr->TotalVtxCount);
-        public ref float2 DisplayPos => ref UnsafeUtility.AsRef<float2>(&NativePtr->DisplayPos);
-        public ref float2 DisplaySize => ref UnsafeUtility.AsRef<float2>(&NativePtr->DisplaySize);
-        public ref float2 FramebufferScale => ref UnsafeUtility.AsRef<float2>(&NativePtr->FramebufferScale);
+        public ref int CmdListsCount => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->CmdListsCount);
+        public ref int TotalIdxCount => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->TotalIdxCount);
+        public ref int TotalVtxCount => ref UnsafeUtilityEx.AsRef<int>(&NativePtr->TotalVtxCount);
+        public ref float2 DisplayPos => ref UnsafeUtilityEx.AsRef<float2>(&NativePtr->DisplayPos);
+        public ref float2 DisplaySize => ref UnsafeUtilityEx.AsRef<float2>(&NativePtr->DisplaySize);
+        public ref float2 FramebufferScale => ref UnsafeUtilityEx.AsRef<float2>(&NativePtr->FramebufferScale);
         public void Clear()
         {
             ImGuiNative.ImDrawData_Clear(NativePtr);
